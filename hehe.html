@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I’m Sorry 💜🌹</title>
+<style>
+  :root {
+    --purple: #7a00ff;
+    --yellow: #ffd700;
+    --dark: #150028;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(135deg, var(--yellow), var(--purple));
+    background-size: 300% 300%;
+    animation: bgMove 10s ease infinite;
+  }
+
+  /* Smooth animated gradient */
+  @keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Glowing roses (illusion of roses blooming) */
+  .rose {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle at 40% 40%, var(--purple), transparent 70%);
+    border-radius: 50%;
+    filter: blur(15px);
+    opacity: 0.7;
+    animation: bloom 10s infinite ease-in-out;
+  }
+
+  .rose:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+  .rose:nth-child(2) { top: 70%; right: 15%; animation-delay: 2s; }
+  .rose:nth-child(3) { bottom: 20%; left: 70%; animation-delay: 4s; }
+  .rose:nth-child(4) { top: 30%; right: 40%; animation-delay: 6s; }
+
+  @keyframes bloom {
+    0%, 100% { transform: scale(0.8); opacity: 0.4; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+  }
+
+  /* Falling petals */
+  .petal {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle at 40% 40%, #ff4d6d 0%, #7a003c 70%);
+    border-radius: 50% 50% 0 50%;
+    transform: rotate(45deg);
+    opacity: 0.9;
+    animation: fall 9s linear infinite;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-10%) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Message box */
+  .container {
+    z-index: 5;
+    max-width: 650px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+  }
+
+  h1 {
+    font-size: 2.6rem;
+    color: var(--yellow);
+    text-shadow: 0 0 20px var(--yellow), 0 0 40px var(--purple);
+    animation: pulse 3s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { text-shadow: 0 0 20px var(--yellow); }
+    50% { text-shadow: 0 0 40px var(--purple); }
+  }
+
+  /* Start button */
+  .start-btn {
+    margin-top: 30px;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(90deg, var(--yellow), var(--purple));
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--yellow);
+    transition: all 0.3s ease;
+    animation: glowButton 3s infinite ease-in-out;
+  }
+
+  .start-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px var(--purple);
+  }
+
+  @keyframes glowButton {
+    0%, 100% { box-shadow: 0 0 20px var(--yellow); }
+    50% { box-shadow: 0 0 40px var(--purple); }
+  }
+
+  /* Hidden message */
+  .message {
+    opacity: 0;
+    margin-top: 35px;
+    transform: translateY(30px);
+    transition: all 1.5s ease;
+  }
+
+  .message.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .message p {
+    font-size: 1.1rem;
+    color: #fffbea;
+    line-height: 1.8;
+    margin-top: 10px;
+  }
+
+  /* Heart animation */
+  .heart {
+    font-size: 2.5rem;
+    color: var(--yellow);
+    margin-top: 20px;
+    animation: beat 1.8s infinite ease-in-out;
+    filter: drop-shadow(0 0 15px var(--yellow));
+  }
+
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+  }
+
+  .signature {
+    margin-top: 25px;
+    color: #fff;
+    font-style: italic;
+    opacity: 0.9;
+  }
+</style>
+</head>
+<body>
+  <!-- Glowing roses -->
+  <div class="rose"></div>
+  <div class="rose"></div>
+  <div class="rose"></div>
+  <div class="rose"></div>
+
+  <!-- Petals -->
+  <div id="petals"></div>
+
+  <div class="container">
+    <h1>I’m Sorry, Axelle 💜💛</h1>
+    <button class="start-btn" onclick="startAnimation()">Start the Message 🌹</button>
+    
+    <div class="message" id="message">
+      <p>
+        I know I made mistakes...<br>
+        I know I can be crazy sometimes — too much, too loud, too emotional.<br>
+        But my heart’s never meant to hurt you.<br>
+        It only beats this strong because you mean that much to me. 💜
+      </p>
+      <div class="signature">— I just want to make you smile again 🌙</div>
+      <div class="heart">💛 Please Take Care Always with Apollo 💛</div>
+    </div>
+  </div>
+
+  <script>
+    function startAnimation() {
+      const msg = document.getElementById('message');
+      msg.classList.add('show');
+      createPetals();
+    }
+
+    function createPetals() {
+      const container = document.getElementById('petals');
+      for (let i = 0; i < 25; i++) {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.animationDuration = 6 + Math.random() * 5 + 's';
+        petal.style.animationDelay = Math.random() * 5 + 's';
+        container.appendChild(petal);
+      }
+    }
+  </script>
+</body>
+</html>
